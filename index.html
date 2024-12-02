@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suivi des Habitudes</title>
+</head>
+<body>
+    <h1>Suivi des Habitudes</h1>
+    
+    <form action="/add_habit" method="POST">
+        <input type="text" name="habit_name" placeholder="Nouvelle habitude" required>
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <h2>Habitudes</h2>
+    <ul>
+        {% for habit in habits %}
+        <li>
+            {{ habit.name }}
+            <form action="/complete_habit/{{ habit.id }}" method="POST" style="display:inline;">
+                <button type="submit">Compléter</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
